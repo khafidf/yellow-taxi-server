@@ -1,24 +1,3 @@
-Here's a README file tailored for your `yellow-taxi-express` project, based on the provided `package.json` information:
-
-```markdown
-# Yellow Taxi Express
-
-## Description
-
-Yellow Taxi Express is a server-side application built with Express.js that acts as an API for fetching taxi trip data in New York City. It utilizes the City of New York's open data API to provide flexible and filtered access to taxi trip records.
-
-## Table of Contents
-
-- [Getting Started](#getting-started)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Running the Application](#running-the-application)
-- [API Endpoints](#api-endpoints)
-- [Dependencies](#dependencies)
-- [License](#license)
-
-## Getting Started
-
 ### Prerequisites
 
 Before you begin, ensure you have the following software installed on your machine:
@@ -33,7 +12,6 @@ Before you begin, ensure you have the following software installed on your machi
    git clone https://github.com/khafidf/yellow-taxi-server.git
    cd yellow-taxi-server/server
    ```
-
 2. Install the dependencies:
    ```bash
    npm install
