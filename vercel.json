@@ -1,0 +1,7 @@
+{
+	"version": 2,
+	"rewrites": [{ "source": "/(.*)", "destination": "/api" }],
+    "env": {
+    "APP_TOKEN": "4rgzkj7igqlehim6qi0jmm7ufm6wshnns0kyap2cen421hiffe"
+  }
+}
