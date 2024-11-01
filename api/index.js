@@ -61,6 +61,7 @@ app.get("/trip", async (req, res) => {
 			},
 		});
 	} catch (error) {
+		console.error("Error fetching data:", error);
 		res.status(500).json({ status: false, message: error.message });
 	}
 });
@@ -71,4 +72,4 @@ app.listen(PORT, () => {
 	console.log(`Server running on http://localhost:${PORT}`);
 });
 
-export default app;
+export default (req, res) => app(req, res);
