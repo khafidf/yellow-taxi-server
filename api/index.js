@@ -1,20 +1,11 @@
 import axios from "axios";
 import express from "express";
-import { getDataWithFilter } from "./api/services.js";
 import dotenv from "dotenv";
 
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
 const baseURL = "https://data.cityofnewyork.us/resource/gkne-dk5s.json";
-
-app.use(express.json());
-app.use((req, res, next) => {
-	req.setHeader("Access-Control-Allow-Origin", "*");
-	req.setHeader("Access-Control-Allow-Methods", "GET");
-	next();
-});
 
 const api = axios.create({
 	baseURL,
@@ -23,6 +14,13 @@ const api = axios.create({
 		"content-type": "application/json",
 		"x-app-token": process.env.APP_TOKEN,
 	},
+});
+
+app.use(express.json());
+app.use((req, res, next) => {
+	res.setHeader("Access-Control-Allow-Origin", "*");
+	res.setHeader("Access-Control-Allow-Methods", "GET");
+	next();
 });
 
 const getDataWithFilter = async (time, trip, amount, limit = 10, page) => {
@@ -44,6 +42,7 @@ const getDataWithFilter = async (time, trip, amount, limit = 10, page) => {
 		});
 		return response.data;
 	} catch (err) {
+		console.error("Error fetching data from the API:", err);
 		throw new Error("Error fetching data from the API");
 	}
 };
@@ -67,9 +66,5 @@ app.get("/trip", async (req, res) => {
 });
 
 app.get("/", (req, res) => res.send("Express on Vercel"));
-
-app.listen(PORT, () => {
-	console.log(`Server running on http://localhost:${PORT}`);
-});
 
 export default (req, res) => app(req, res);
